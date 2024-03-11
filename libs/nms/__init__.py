@@ -1,3 +1,3 @@
-from .nms_wrapper import nms, soft_nms
+from .nms_wrapper import nonmaxsuppression, soft_nms
 
-__all__ = ['nms', 'soft_nms']
+__all__ = ['nonmaxsuppression', 'soft_nms']
