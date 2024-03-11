@@ -10,7 +10,7 @@ import warnings
 import argparse
 import numpy as np
 from modules.utils import *
-from libs.nms.nms_wrapper import nms
+from libs.nms.nms_wrapper import nonmaxsuppression as nms
 from PIL import Image, ImageDraw, ImageFont
 from cfgs.getcfg import getCfgByDatasetAndBackbone
 from modules.fasterRCNN import FasterRCNNFPNResNets

@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from modules.utils import *
 from modules.losses import *
-from libs.nms.nms_wrapper import nms
+from libs.nms.nms_wrapper import nonmaxsuppression as nms
 
 
 '''

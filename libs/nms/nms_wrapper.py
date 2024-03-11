@@ -4,7 +4,7 @@ import torch
 from . import nms_cpu, nms_cuda
 
 
-def nms(dets, iou_thr, device_id=None):
+def nonmaxsuppression(dets, iou_thr, device_id=None):
     """Dispatch to either CPU or GPU NMS implementations.
 
     The input can be either a torch tensor or numpy array. GPU NMS will be used

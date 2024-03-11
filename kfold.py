@@ -13,6 +13,7 @@ from torch.utils.data import DataLoader, ConcatDataset
 from modules.utils import *
 from cfgs.getcfg import getCfgByDatasetAndBackbone
 from modules.fasterRCNN import FasterRCNNFPNResNets
+from libs.nms.nms_wrapper import nonmaxsuppression as nms
 warnings.filterwarnings("ignore")
 
 from sklearn.model_selection import KFold
