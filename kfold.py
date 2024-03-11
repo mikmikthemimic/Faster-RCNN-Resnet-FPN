@@ -98,9 +98,9 @@ def kfold():
 		print('--------------------------------')
 		
 		train_subsampler = torch.utils.data.SubsetRandomSampler(train_ids)
-		# test_subsampler = torch.utils.data.SubsetRandomSampler(test_ids)
+		test_subsampler = torch.utils.data.SubsetRandomSampler(test_ids)
 		trainloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=train_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
-		# testloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=test_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
+		testloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=test_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
 		
 		for epoch in range(start_epoch, end_epoch+1):
 			# set train mode
@@ -145,8 +145,7 @@ def kfold():
 		saveCheckpoints(state_dict, savepath, logger_handle)
 		
 		#prepare model - mode from  TRAIN to TEST
-
-
+		
 	#load checkpoints
 
 	#test mAP
