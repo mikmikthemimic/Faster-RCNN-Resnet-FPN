@@ -65,6 +65,7 @@ def kfold():
 	# configuration options
 	end_epoch = cfg.MAX_EPOCHS      # from train.py
 	results = []
+	img_ids = []
 	kfold = KFold(n_splits=k_folds, shuffle=True)
 	# prepare optimizer
 	learning_rate_idx = 0
@@ -97,10 +98,10 @@ def kfold():
 		print('--------------------------------')
 		
 		train_subsampler = torch.utils.data.SubsetRandomSampler(train_ids)
-		test_subsampler = torch.utils.data.SubsetRandomSampler(test_ids)
+		# test_subsampler = torch.utils.data.SubsetRandomSampler(test_ids)
 		trainloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=train_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
-		testloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=test_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
-
+		# testloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.BATCHSIZE, sampler=test_subsampler, num_workers=cfg.NUM_WORKERS, collate_fn=COCODataset.paddingCollateFn, pin_memory=cfg.PIN_MEMORY)
+		
 		for epoch in range(start_epoch, end_epoch+1):
 			# set train mode
 			if is_multi_gpus:
@@ -142,11 +143,9 @@ def kfold():
 					'optimizer': optimizer.state_dict()}
 		savepath = os.path.join(cfg.TRAIN_BACKUPDIR, 'frcnn_F{}.pth'.format(fold))
 		saveCheckpoints(state_dict, savepath, logger_handle)
+		
+		#prepare model - mode from  TRAIN to TEST
 
-
-	#prepare dataset for testing
-
-	#prepare model - mode from  TRAIN to TEST
 
 	#load checkpoints
 
