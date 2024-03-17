@@ -146,8 +146,8 @@ def kfold():
 		saveCheckpoints(state_dict, savepath, logger_handle)
 		
 		#prepare model - mode from  TRAIN to TEST
-		
-	#load checkpoints
+		#make new model variable and just access current (train) model progress from checkpoint // follow test.py
+		#load checkpoints
 
 	#test mAP
 
