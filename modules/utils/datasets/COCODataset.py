@@ -14,8 +14,8 @@ from torch.utils.data import Dataset
 from torch.nn import functional as F
 from torchvision.transforms import transforms
 sys.path.append(os.path.join(os.getcwd(), 'libs/cocoapi/PythonAPI'))
-from pycocotools.coco import COCO
-from pycocotools.cocoeval import COCOeval
+from pycocotools_src.coco import COCO
+from pycocotools_src.cocoeval import COCOeval
 
 
 '''
